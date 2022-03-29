@@ -7,7 +7,7 @@ const xss = require('xss-clean');
 // create an express app
 const app = express();
 
-//middlewares
+// middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
