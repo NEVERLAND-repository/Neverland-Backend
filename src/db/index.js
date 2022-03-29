@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-exports.connect = async (url) =>
+exports.connect = (url) =>
   // Mongoose and Server start up
   mongoose
     .connect(url, {
@@ -8,4 +8,4 @@ exports.connect = async (url) =>
       useUnifiedTopology: true,
     })
     .then(() =>
-      console.log('database connected successfully'));
+      console.log('database connection successful'));
