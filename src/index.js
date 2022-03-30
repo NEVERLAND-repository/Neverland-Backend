@@ -8,6 +8,7 @@ const port = process.env.PORT || 8800;
 
 const start = async (_port, _url, _app) => {
   await connect(_url);
+  // eslint-disable-next-line no-console
   _app.listen(_port, () => console.log(`Server is running on Port: ${_port}`));
 };
 
