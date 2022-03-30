@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const AppError = require('../utilities/appError');
 
 const handleCastErrorDB = (err) => {
@@ -42,6 +43,7 @@ const sendErrorProd = (err, res) => {
     // Programming or other unknown error: don't leak error details
   } else {
     // 1) Log error
+    // eslint-disable-next-line no-console
     console.error('ERROR 💥', err);
 
     // 2) Send generic message
@@ -52,6 +54,7 @@ const sendErrorProd = (err, res) => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
@@ -64,6 +67,7 @@ module.exports = (err, req, res, next) => {
       name: err.name,
       message: err.message,
     };
+    // eslint-disable-next-line no-console
     console.log(error.name);
     if (error.name === 'CastError') error = handleCastErrorDB(error);
     if (error.code === 11000) error = handleDuplicateFieldsDB(error);
