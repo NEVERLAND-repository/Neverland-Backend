@@ -1,14 +1,28 @@
 {
   "env": {
+    "browser": true,
     "commonjs": true,
     "es2021": true,
     "node": true
   },
-  "extends": ["airbnb-base"],
+  "extends": ["eslint:recommended","airbnb-base"],
   "parserOptions": {
     "ecmaVersion": "latest"
   },
   "rules": {
-    "linebreak-style": 0
+    "implicit-arrow-linebreak": ["error", "below"],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "strict": 0
   }
 }
