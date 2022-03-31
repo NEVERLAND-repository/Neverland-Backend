@@ -1,22 +1,18 @@
 const dotenv = require('dotenv');
-const path = require('path');
+const asyncHandler = require('express-async-handler');
 const app = require('./app');
-const { connect } = require('./db');
-const asyncHandler = require('express-async-handler')
+const connect = require('./db');
 
 // configure dotenv and port
-dotenv.config({ path: path.join(__dirname, '/.env') });
+dotenv.config();
 const port = process.env.PORT || 8800;
-const DB = process.env.MONGODB_URL.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD,
-);
+const DB = process.env.MONGODB_URL;
 
 const start = asyncHandler(async (_port, _url, _app) => {
   try {
     await connect(_url);
     _app.listen(_port, () =>
-      console.log(`Server is running on Port: ${_port}`));
+      console.log(`Server is running on port: ${_port}`));
   } catch (error) {
     console.log(error);
   }
