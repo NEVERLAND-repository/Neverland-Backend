@@ -21,6 +21,8 @@ app.use(morgan('dev'));
 // routes
 
 app.use('/api/v1/users', userRouter);
+app.use('/', (req, res) =>
+  res.status(200).json({ message: 'Welcome to Neverland API!' }));
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

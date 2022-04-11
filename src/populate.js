@@ -8,9 +8,8 @@ const jsonProducts = require('./books.json');
 const start = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
-    console.log('Database Connection Is Successful!');
     await Book.create(jsonProducts);
-    console.log('Database Population Is Successful!');
+    console.log('Database population is successful!');
     process.exit(0);
   } catch (error) {
     console.log(error);
