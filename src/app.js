@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const xss = require('xss-clean');
 const { AppError } = require('./utilities');
 const { globalErrorHandler } = require('./controllers');
-const { userRouter } = require('./routes');
 
 // create an express app
 const app = express();
@@ -23,6 +22,9 @@ app.use(morgan('dev'));
 app.use('/api/v1/users', userRouter);
 app.use('/', (req, res) =>
   res.status(200).json({ message: 'Welcome to Neverland API!' }));
+app.use('/', (req, res) => {
+  return res.status(200).json({ message: 'Welcome to Neverland API!' });
+});
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
