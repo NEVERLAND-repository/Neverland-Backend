@@ -20,7 +20,8 @@ const createSendToken = (user, statusCode, res) => {
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   res.cookie('jwt', token, cookieOptions);
   // remove password from output
-  user.password = undefined;
+  delete user.password;
+
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -71,6 +72,7 @@ const login = asyncHandler(async (req, res, next) => {
   // 3 if everything ok, send token to client
   createSendToken(user, 200, res);
 });
+
 const protect = asyncHandler(async (req, res, next) => {
   // get token and check if it is there
   let token;
