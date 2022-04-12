@@ -31,7 +31,7 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 const signup = asyncHandler(async (req, res, next) => {
-  // distructure request body object
+  // destructure request body object
   const { fullName, username, password } = req.body;
 
   // check that all fields are filled
@@ -45,7 +45,7 @@ const signup = asyncHandler(async (req, res, next) => {
     return next(new AppError(`User with ${username} already exist`, 400));
   }
 
-  //   create user
+  // create user
   const userData = {
     fullName,
     username,
@@ -71,6 +71,7 @@ const login = asyncHandler(async (req, res, next) => {
   // 3 if everything ok, send token to client
   createSendToken(user, 200, res);
 });
+
 const protect = asyncHandler(async (req, res, next) => {
   // get token and check if it is there
   let token;
