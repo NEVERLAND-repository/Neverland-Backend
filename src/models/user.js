@@ -62,8 +62,8 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-UserSchema.pre('save', async (next) => {
-  // only run this function if password was modified
+UserSchema.pre('save', async function (next) {
+  // only run this function is password was modified
   // if (!this.isModified("password")) return next();
   // hash password with cost of 12
   this.password = await bcrypt.hash(this.password, 12);
@@ -72,10 +72,10 @@ UserSchema.pre('save', async (next) => {
 
 // Instance method. method available in the whole model
 
-UserSchema.methods.correctPassword = async (
+UserSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
-) => {
+) {
   const passwordStatus = await bcrypt.compare(candidatePassword, userPassword);
   return passwordStatus;
 };
