@@ -1,5 +1,5 @@
-const globalErrorHandler = require('./errorControllers');
-const authController = require('./authContollers');
+const globalErrorHandler = require('./error');
+const authController = require('./auth');
 
 module.exports = {
   globalErrorHandler,

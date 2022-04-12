@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
-const userSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
@@ -25,8 +25,6 @@ const userSchema = new mongoose.Schema(
       minlength: [8, 'Password can not be less than 8 characters'],
       trim: true,
       required: [true, 'Password must be provided'],
-      // match: [/(?=.*
-      // [a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/, 'Password cannot have whitespace character'],
       select: false,
     },
     emailAddress: {
@@ -39,7 +37,6 @@ const userSchema = new mongoose.Schema(
       ],
       lowercase: [true, 'Email address must be in lowercase'],
       unique: true,
-      default: null,
       sparse: true,
     },
     gender: {
@@ -65,7 +62,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function (next) {
   // only run this function is password was modified
   // if (!this.isModified("password")) return next();
   // hash password with cost of 12
@@ -75,7 +72,7 @@ userSchema.pre('save', async function (next) {
 
 // Instance method. method available in the whole model
 
-userSchema.methods.correctPassword = async function (
+UserSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
@@ -83,4 +80,4 @@ userSchema.methods.correctPassword = async function (
   return passwordStatus;
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', UserSchema);
