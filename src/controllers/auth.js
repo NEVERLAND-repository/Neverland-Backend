@@ -51,7 +51,7 @@ const signup = asyncHandler(async (req, res, next) => {
     username,
     password,
   };
-  const newUser = await User.create(userData);
+  const newUser = await new User(userData).save();
   createSendToken(newUser, 201, res);
 });
 
