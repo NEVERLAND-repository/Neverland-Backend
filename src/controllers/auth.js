@@ -20,7 +20,8 @@ const createSendToken = (user, statusCode, res) => {
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   res.cookie('jwt', token, cookieOptions);
   // remove password from output
-  user.password = undefined;
+  delete user.password;
+
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -51,7 +52,7 @@ const signup = asyncHandler(async (req, res, next) => {
     username,
     password,
   };
-  const newUser = await User.create(userData);
+  const newUser = await new User(userData).save();
   createSendToken(newUser, 201, res);
 });
 

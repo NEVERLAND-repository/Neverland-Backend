@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema(
     },
     emailAddress: {
       type: String,
-      minlength: [5, 'Email address can not be less than 6 characters'],
+      minlength: [5, 'Email address can not be less than 5 characters'],
       trim: true,
       match: [
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
