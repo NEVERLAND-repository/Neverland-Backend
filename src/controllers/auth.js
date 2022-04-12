@@ -55,6 +55,22 @@ const signup = asyncHandler(async (req, res, next) => {
   createSendToken(newUser, 201, res);
 });
 
+const login = asyncHandler(async (req, res, next) => {
+  const { username, password } = req.body;
+
+  // 1) if email and password exist
+  if (!username || !password) {
+    return next(new AppError('please provide username and password', 404));
+  }
+
+  // 2) check if user exists && password is correct
+  const user = await User.findOne({ username }).select('+password');
+  if (!user || !(await user.correctPassword(password, user.password))) {
+    return next(new AppError('incorrect username or password', 401));
+  }
+  // 3 if everything ok, send token to client
+  createSendToken(user, 200, res);
+});
 const protect = asyncHandler(async (req, res, next) => {
   // get token and check if it is there
   let token;
@@ -95,4 +111,5 @@ const protect = asyncHandler(async (req, res, next) => {
 module.exports = {
   signup,
   protect,
+  login,
 };
