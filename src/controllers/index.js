@@ -1,7 +1,9 @@
 const globalErrorHandler = require('./error');
-const authController = require('./auth');
+const authControllers = require('./auth');
+const userControllers = require('./user');
 
 module.exports = {
   globalErrorHandler,
-  authController,
+  authControllers,
+  userControllers,
 };

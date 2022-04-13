@@ -38,6 +38,7 @@ const UserSchema = new mongoose.Schema(
       lowercase: [true, 'Email address must be in lowercase'],
       unique: true,
       sparse: true,
+      default: 'a@bc.com',
     },
     gender: {
       type: String,
