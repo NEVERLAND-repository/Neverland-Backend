@@ -22,8 +22,8 @@ const home = asyncHandler(async (req, res, next) => {
   }
 
   if (token) {
-    const trendingBooks = await Book.aggregate({ $sample: { size: 3 } });
-    return createSendData(trendingBooks, 200, res);
+    const trendingBooks = await Book.aggregate().sample(3);
+    createSendData(trendingBooks, 200, res);
   }
 });
 
