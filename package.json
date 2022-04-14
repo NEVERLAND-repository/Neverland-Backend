@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/NEVERLAND-repository/Neverland-Backend#readme",
   "dependencies": {
+    "@imranbarbhuiya/mongoose-fuzzy-searching": "^3.0.5",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -33,6 +34,7 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.8",
+    "mongoose-fuzzy-searching": "^2.0.2",
     "morgan": "^1.10.0",
     "xss-clean": "^0.1.1"
   },
