@@ -1,21 +1,24 @@
-const asyncHandler = require('express-async-handler');
-const { AppError } = require('../utilities');
+// const asyncHandler = require('express-async-handler');
+// const { AppError } = require('../utilities');
 const { User } = require('../models');
 const { createSendToken } = require('../services');
 
-const signup = asyncHandler(async (req, res, next) => {
+// const signup = asyncHandler(async (req, res, next) => {
+const signup = async (req, res, next) => {
   // destructure request body object
   const { fullName, username, password } = req.body;
 
   // check that all fields are filled
   if (!fullName || !username || !password) {
-    return next(new AppError('Fields are incomplete', 400));
+    const message = 'Empty field';
+    return createSendToken({}, 'error', message, res);
   }
 
   // check if user exist
   const userExists = await User.findOne({ username });
   if (userExists) {
-    return next(new AppError(`User with ${username} already exist`, 400));
+    const message = 'User exists';
+    return createSendToken({}, 'error', message, res);
   }
 
   // create user
@@ -24,27 +27,32 @@ const signup = asyncHandler(async (req, res, next) => {
     username,
     password,
   };
-  const newUser = await new User(userData).save();
-  createSendToken(newUser, 201, res);
-});
+  await new User(userData).save();
+  const message = 'Account created successfully';
+  return createSendToken({}, 'success', message, res);
+};
 
-const login = asyncHandler(async (req, res, next) => {
+// Login Controller
+const login = async (req, res, next) => {
   const { username, password } = req.body;
 
-  // 1) if email and password exist
+  // 1) if email and password is missing
   if (!username || !password) {
-    return next(new AppError('Please provide username and password', 400));
+    const message = 'User detail missing';
+    createSendToken({}, 'error', message, res);
   }
 
   // 2) check if user exists && password is correct
   const user = await User.findOne({ username });
   if (!user || !(await user.comparePassword(password, user.password))) {
-    return next(new AppError('Incorrect username or password', 400));
+    const message = 'User password is incorrect';
+    createSendToken({}, 'error', message, res);
   }
 
   // 3) if everything ok, send token to client
-  createSendToken(user, 200, res);
-});
+  const message = 'Logged in successfully';
+  createSendToken(user, 'success', message, res);
+};
 
 module.exports = {
   signup,
