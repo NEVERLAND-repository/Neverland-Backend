@@ -25,7 +25,6 @@ const UserSchema = new mongoose.Schema(
       minlength: [8, 'Password can not be less than 8 characters'],
       trim: true,
       required: [true, 'Password must be provided'],
-      select: false,
     },
     emailAddress: {
       type: String,
@@ -60,13 +59,13 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
-UserSchema.pre('save', async function hash(next) {
+UserSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
 
 // Instance method. method available in the whole model
-UserSchema.methods.comparePassword = async function compare(
+UserSchema.methods.comparePassword = async function (
   candidatePassword,
   userPassword,
 ) {

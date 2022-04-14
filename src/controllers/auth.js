@@ -30,20 +30,28 @@ const signup = async (req, res, next) => {
 // Login Controller
 const login = async (req, res, next) => {
   const { username, password } = req.body;
+  console.log(username, password);
+  let user = null;
 
-  if (!username || !password) {
-    const message = 'User detail missing';
+  if (username) {
+    user = await User.findOne({ username });
+    if (!user) {
+      const message = 'User does not exist';
+      return createSendToken({}, 'error', message, res);
+    }
+  } else {
+    const message = 'username is empty';
     return createSendToken({}, 'error', message, res);
   }
 
-  const user = await User.findOne({ username });
-  if (!user || !(await user.comparePassword(password, user.password))) {
-    const message = 'User password is incorrect';
-    return createSendToken({}, 'error', message, res);
-  }
+  const isValidPassword = await user.comparePassword(password, user.password);
 
-  const message = 'Logged in successfully';
-  return createSendToken(user, 'success', message, res);
+  if ((user && password) && isValidPassword) {
+    const message = 'Logged in successfully';
+    return createSendToken(user, 'success', message, res);
+  }
+  const message = 'User detail missing';
+  return createSendToken({}, 'error', message, res);
 };
 
 module.exports = {
