@@ -68,7 +68,7 @@ UserSchema.pre('save', async function (next) {
 });
 
 // Instance method. method available in the whole model
-UserSchema.methods.correctPassword = async function (
+UserSchema.methods.comparePassword = async function (
   candidatePassword,
   userPassword
 ) {

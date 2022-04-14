@@ -9,7 +9,7 @@ const signup = asyncHandler(async (req, res, next) => {
 
   // check that all fields are filled
   if (!fullName || !username || !password) {
-    return next(new AppError('fields are incomplete', 400));
+    return next(new AppError('Fields are incomplete', 400));
   }
 
   // check if user exist
@@ -37,8 +37,8 @@ const login = asyncHandler(async (req, res, next) => {
   }
 
   // 2) check if user exists && password is correct
-  const user = await User.findOne({ username }).select('+password');
-  if (!user || !(await user.correctPassword(password, user.password))) {
+  const user = await User.findOne({ username });
+  if (!user || !(await user.comparePassword(password, user.password))) {
     return next(new AppError('Incorrect username or password', 400));
   }
 

@@ -12,7 +12,7 @@ const home = asyncHandler(async (req, res, next) => {
     req.query.category === 'manga' ||
     req.query.category === 'novels'
   ) {
-    categoryBooks = await Book.find({ category: req.query }).limit(6);
+    categoryBooks = await Book.find({ category: req.query.category }).limit(6);
   } else {
     categoryBooks = await Book.find({ category: 'comics' }).limit(6);
   }
@@ -44,15 +44,16 @@ const home = asyncHandler(async (req, res, next) => {
 });
 
 const search = asyncHandler(async (req, res, next) => {
+  let token;
   const searchResults = await Book.fuzzySearch(req.query.searchQuery).limit(5);
-  if (req.query.searchQuery) {
+  if (searchResults.length != 0) {
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith('Bearer')
     ) {
       token = req.headers.authorization.split(' ')[1];
     } else {
-      return createSendData(searchResults, 401, 'Unauthenticated', res);
+      return createSendData(searchResults, 401, 'Search query cannot be empty', res);
     }
   }
 
@@ -63,8 +64,6 @@ const search = asyncHandler(async (req, res, next) => {
     }
     return createSendData(searchResults, 401, 'Unauthenticated', res);
   }
-
-  return next(new AppError('Search query cannot be empty', 400));
 });
 
 module.exports = {
