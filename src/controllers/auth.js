@@ -1,13 +1,15 @@
 const { User } = require('../models');
 const { createSendToken } = require('../services');
+const { createUserSchema, loginUserSchema } = require('../validators');
 
 // Signup Controller
 const signup = async (req, res, next) => {
   const { fullName, username, password } = req.body;
 
-  if (!fullName || !username || !password) {
-    const message = 'Empty field';
-    return createSendToken({}, 'error', message, res);
+  const validateUserInput = createUserSchema.validate({ fullName, username, password });
+
+  if (validateUserInput.error) {
+    return createSendToken({}, 'error', validateUserInput.error, res);
   }
 
   const userExists = await User.findOne({ username });
@@ -31,9 +33,10 @@ const signup = async (req, res, next) => {
 const login = async (req, res, next) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    const message = 'User detail missing';
-    return createSendToken({}, 'error', message, res);
+  const validateUserInput = loginUserSchema.validate({ username, password });
+
+  if (validateUserInput.error) {
+    return createSendToken({}, 'error', validateUserInput.error, res);
   }
 
   const user = await User.findOne({ username });
