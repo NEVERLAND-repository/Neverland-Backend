@@ -60,13 +60,13 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
-UserSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function hash(next) {
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
 
 // Instance method. method available in the whole model
-UserSchema.methods.comparePassword = async function (
+UserSchema.methods.comparePassword = async function compare(
   candidatePassword,
   userPassword,
 ) {

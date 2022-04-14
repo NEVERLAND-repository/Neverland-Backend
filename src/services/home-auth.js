@@ -5,10 +5,9 @@ const verifyToken = (token) => {
   return verfiedToken;
 };
 
-const createSendData = (data, statusCode, message, res) => {
-  res.status(statusCode).json({
-    status: 'success',
-    statusCode,
+const createSendData = function sendData(data, status, message, res) {
+  return res.json({
+    status,
     message,
     data,
   });
