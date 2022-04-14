@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongooseFuzzySearching = require('mongoose-fuzzy-searching');
 
 const BookSchema = new mongoose.Schema(
   {
@@ -48,5 +49,9 @@ const BookSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+BookSchema.plugin(mongooseFuzzySearching, {
+  fields: ['name', 'author'],
+});
 
 module.exports = mongoose.model('Book', BookSchema);

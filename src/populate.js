@@ -3,12 +3,12 @@ require('dotenv').config();
 const connectDB = require('./db');
 const { Book } = require('./models');
 
-const jsonProducts = require('./books.json');
+const jsonBooks = require('./books.json');
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
-    await Book.create(jsonProducts);
+    await Book.create(jsonBooks);
     console.log('Database population is successful');
     process.exit(0);
   } catch (error) {

@@ -36,7 +36,6 @@ const UserSchema = new mongoose.Schema(
         'Please provide valid email address',
       ],
       lowercase: [true, 'Email address must be in lowercase'],
-      unique: true,
       sparse: true,
       default: 'a@bc.com',
     },
@@ -64,16 +63,12 @@ const UserSchema = new mongoose.Schema(
 );
 
 UserSchema.pre('save', async function (next) {
-  // only run this function is password was modified
-  // if (!this.isModified("password")) return next();
-  // hash password with cost of 12
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
 
 // Instance method. method available in the whole model
-
-UserSchema.methods.correctPassword = async function (
+UserSchema.methods.comparePassword = async function (
   candidatePassword,
   userPassword
 ) {
