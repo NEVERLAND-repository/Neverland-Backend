@@ -1,9 +1,8 @@
-const asyncHandler = require('express-async-handler');
-const { AppError } = require('../utilities');
 const { Book } = require('../models');
 const { verifyToken, createSendData } = require('../services');
 
-const home = asyncHandler(async (req, res, next) => {
+// Homepage controller
+const home = async (req, res, next) => {
   const trendingBooks = await Book.aggregate().sample(3);
   let categoryBooks;
 
@@ -22,7 +21,6 @@ const home = asyncHandler(async (req, res, next) => {
     categoryBooks,
   };
 
-  // get token and check if it is there
   let token;
 
   if (
@@ -31,19 +29,19 @@ const home = asyncHandler(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(' ')[1];
   } else {
-    return createSendData(data, 401, 'Unauthenticated', res);
+    return createSendData(data, 'success', 'Unauthenticated', res);
   }
 
   if (token) {
     const isValidToken = verifyToken(token);
     if (isValidToken) {
-      return createSendData(data, 200, 'Authenticated', res);
+      return createSendData(data, 'success', 'Authenticated', res);
     }
-    return createSendData(data, 401, 'Unauthenticated', res);
+    return createSendData(data, 'success', 'Unauthenticated', res);
   }
-});
+};
 
-const search = asyncHandler(async (req, res, next) => {
+const search = async (req, res, next) => {
   let token;
   const searchResults = await Book.fuzzySearch(req.query.searchQuery).limit(5);
   if (searchResults.length !== 0) {
@@ -55,7 +53,7 @@ const search = asyncHandler(async (req, res, next) => {
     } else {
       return createSendData(
         searchResults,
-        401,
+        'error',
         'Search query cannot be empty',
         res,
       );
@@ -65,11 +63,11 @@ const search = asyncHandler(async (req, res, next) => {
   if (token) {
     const isValidToken = verifyToken(token);
     if (isValidToken) {
-      return createSendData(searchResults, 200, 'Authenticated', res);
+      return createSendData(searchResults, 'success', 'Authenticated', res);
     }
-    return createSendData(searchResults, 401, 'Unauthenticated', res);
+    return createSendData(searchResults, 'success', 'Unauthenticated', res);
   }
-});
+};
 
 module.exports = {
   home,
