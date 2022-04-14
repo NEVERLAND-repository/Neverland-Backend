@@ -1,32 +1,22 @@
 {
-  "env": {
-    "commonjs": true,
-    "es2021": true,
-    "node": true
-  },
-  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
-  "plugins": ["prettier"],
-  "parserOptions": {
-    "ecmaVersion": "latest"
-  },
-  "rules": {
-    "no-console": 0,
-    "implicit-arrow-linebreak": [0, "below"],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "strict": 0,
-    "prettier/prettier": "error",
-    "spaced-comment": "off",
-    "consistent-return": "off",
-    "func-names": "off",
-    "object-shorthand": "off",
-    "no-process-exit": "off",
-    "no-param-reassign": "off",
-    "no-return-await": "off",
-    "no-underscore-dangle": "off",
-    "class-methods-use-this": "off",
-    "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
-  }
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 0,
+      "no-param-reassign": 0,
+      "prefer-destructuring": 0,
+      "max-len": 0,
+      "no-underscore-dangle": 0,
+      "consistent-return": 0
+    }
 }

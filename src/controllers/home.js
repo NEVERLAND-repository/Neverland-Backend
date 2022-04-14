@@ -8,9 +8,9 @@ const home = asyncHandler(async (req, res, next) => {
   let categoryBooks;
 
   if (
-    req.query.category === 'comics' ||
-    req.query.category === 'manga' ||
-    req.query.category === 'novels'
+    req.query.category === 'comics'
+    || req.query.category === 'manga'
+    || req.query.category === 'novels'
   ) {
     categoryBooks = await Book.find({ category: req.query.category }).limit(6);
   } else {
@@ -26,8 +26,8 @@ const home = asyncHandler(async (req, res, next) => {
   let token;
 
   if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
+    req.headers.authorization
+    && req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
   } else {
@@ -46,14 +46,19 @@ const home = asyncHandler(async (req, res, next) => {
 const search = asyncHandler(async (req, res, next) => {
   let token;
   const searchResults = await Book.fuzzySearch(req.query.searchQuery).limit(5);
-  if (searchResults.length != 0) {
+  if (searchResults.length !== 0) {
     if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith('Bearer')
+      req.headers.authorization
+      && req.headers.authorization.startsWith('Bearer')
     ) {
       token = req.headers.authorization.split(' ')[1];
     } else {
-      return createSendData(searchResults, 401, 'Search query cannot be empty', res);
+      return createSendData(
+        searchResults,
+        401,
+        'Search query cannot be empty',
+        res,
+      );
     }
   }
 

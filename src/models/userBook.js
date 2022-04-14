@@ -19,7 +19,7 @@ const UserBookSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model('UserBook', UserBookSchema);

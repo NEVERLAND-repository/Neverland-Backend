@@ -59,7 +59,7 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-  }
+  },
 );
 
 UserSchema.pre('save', async function (next) {
@@ -70,7 +70,7 @@ UserSchema.pre('save', async function (next) {
 // Instance method. method available in the whole model
 UserSchema.methods.comparePassword = async function (
   candidatePassword,
-  userPassword
+  userPassword,
 ) {
   const passwordStatus = await bcrypt.compare(candidatePassword, userPassword);
   return passwordStatus;

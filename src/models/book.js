@@ -47,7 +47,7 @@ const BookSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 BookSchema.plugin(mongooseFuzzySearching, {
