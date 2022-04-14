@@ -5,8 +5,8 @@ const verifyToken = (token) => {
   return verfiedToken;
 };
 
-const createSendData = (data, status, message, res) => {
-  res.json({
+const createSendData = function sendData(data, status, message, res) {
+  return res.json({
     status,
     message,
     data,
