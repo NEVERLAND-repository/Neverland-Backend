@@ -50,23 +50,23 @@ const search = async (req, res, next) => {
       && req.headers.authorization.startsWith('Bearer')
     ) {
       token = req.headers.authorization.split(' ')[1];
-    } else {
-      return createSendData(
-        searchResults,
-        'error',
-        'Search query cannot be empty',
-        res,
-      );
     }
-  }
 
-  if (token) {
-    const isValidToken = verifyToken(token);
-    if (isValidToken) {
-      return createSendData(searchResults, 'success', 'Authenticated', res);
+    if (token) {
+      const isValidToken = verifyToken(token);
+      if (isValidToken) {
+        return createSendData(searchResults, 'success', 'Authenticated', res);
+      }
+      return createSendData(searchResults, 'success', 'Unauthenticated', res);
     }
     return createSendData(searchResults, 'success', 'Unauthenticated', res);
   }
+  return createSendData(
+    searchResults,
+    'error',
+    'Search query cannot be empty',
+    res,
+  );
 };
 
 module.exports = {

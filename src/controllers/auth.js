@@ -1,13 +1,15 @@
 const { User } = require('../models');
 const { createSendToken } = require('../services');
+const { createUserSchema, loginUserSchema } = require('../validators');
 
 // Signup Controller
 const signup = async (req, res, next) => {
   const { fullName, username, password } = req.body;
 
-  if (!fullName || !username || !password) {
-    const message = 'Empty field';
-    return createSendToken({}, 'error', message, res);
+  const validateUserInput = createUserSchema.validate({ fullName, username, password });
+
+  if (validateUserInput.error) {
+    return createSendToken({}, 'error', validateUserInput.error, res);
   }
 
   const userExists = await User.findOne({ username });
@@ -30,28 +32,21 @@ const signup = async (req, res, next) => {
 // Login Controller
 const login = async (req, res, next) => {
   const { username, password } = req.body;
-  console.log(username, password);
-  let user = null;
 
-  if (username) {
-    user = await User.findOne({ username });
-    if (!user) {
-      const message = 'User does not exist';
-      return createSendToken({}, 'error', message, res);
-    }
-  } else {
-    const message = 'username is empty';
+  const validateUserInput = loginUserSchema.validate({ username, password });
+
+  if (validateUserInput.error) {
+    return createSendToken({}, 'error', validateUserInput.error, res);
+  }
+
+  const user = await User.findOne({ username });
+  if (!user || !(await user.comparePassword(password, user.password))) {
+    const message = 'User password is incorrect';
     return createSendToken({}, 'error', message, res);
   }
 
-  const isValidPassword = await user.comparePassword(password, user.password);
-
-  if ((user && password) && isValidPassword) {
-    const message = 'Logged in successfully';
-    return createSendToken(user, 'success', message, res);
-  }
-  const message = 'User detail missing';
-  return createSendToken({}, 'error', message, res);
+  const message = 'Logged in successfully';
+  return createSendToken(user, 'success', message, res);
 };
 
 module.exports = {
