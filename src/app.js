@@ -3,8 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const xss = require('xss-clean');
-// const { AppError } = require('./utilities');
-// const { globalErrorHandler } = require('./controllers');
+const { globalErrorHandler } = require('./controllers');
 const { baseRouter, authRouter, homeRouter } = require('./routes');
 
 // create an express app
@@ -23,5 +22,5 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/home', homeRouter);
 app.use('/', baseRouter);
 
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 module.exports = app;

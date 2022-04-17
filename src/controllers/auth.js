@@ -1,9 +1,10 @@
+const asyncHandler = require('express-async-handler');
 const { User } = require('../models');
 const { createSendToken } = require('../services');
 const { createUserSchema, loginUserSchema } = require('../validators');
 
 // Signup Controller
-const signup = async (req, res, next) => {
+const signup = asyncHandler(async (req, res, next) => {
   const { fullName, username, password } = req.body;
 
   const validateUserInput = createUserSchema.validate({ fullName, username, password });
@@ -27,10 +28,10 @@ const signup = async (req, res, next) => {
   await new User(userData).save();
   const message = 'Account created successfully';
   return createSendToken({}, 'success', message, res);
-};
+});
 
 // Login Controller
-const login = async (req, res, next) => {
+const login = asyncHandler(async (req, res, next) => {
   const { username, password } = req.body;
 
   const validateUserInput = loginUserSchema.validate({ username, password });
@@ -47,7 +48,7 @@ const login = async (req, res, next) => {
 
   const message = 'Logged in successfully';
   return createSendToken(user, 'success', message, res);
-};
+});
 
 module.exports = {
   signup,
