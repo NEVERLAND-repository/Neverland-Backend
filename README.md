@@ -122,7 +122,7 @@ Make sure you have the following prerequisites installed on your operating syste
   git push origin
   ```
 
-  Now you need to merge the `master` branch into your branch. This can be done in the following way:
+  Now you need to merge the `dev` branch into your branch. This can be done in the following way:
 
   ```
   git checkout <your_branch_name>

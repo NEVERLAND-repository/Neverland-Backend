@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const xss = require('xss-clean');
 // const { AppError } = require('./utilities');
 // const { globalErrorHandler } = require('./controllers');
-const { baseRouter, authRouter, homeRouter } = require('./routes');
+const v1 = require('./routes/v1');
 
 // create an express app
 const app = express();
@@ -19,9 +19,9 @@ app.use(xss());
 app.use(morgan('dev'));
 
 // routes
-app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/home', homeRouter);
-app.use('/', baseRouter);
+app.use('/api/v1', v1);
+// app.use('/api/v1/home', homeRouter);
+// app.use('/', baseRouter);
 
 // app.use(globalErrorHandler);
 module.exports = app;
