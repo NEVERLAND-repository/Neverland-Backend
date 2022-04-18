@@ -39,7 +39,6 @@ const UserSchema = new mongoose.Schema(
         'Please provide valid email address',
       ],
       lowercase: [true, 'Email address must be in lowercase'],
-      sparse: true,
       default: 'a@bc.com',
     },
     gender: {

@@ -1,8 +1,9 @@
+const asyncHandler = require('express-async-handler');
 const { Book } = require('../models');
 const { verifyToken, createSendData } = require('../services');
 
 // Homepage controller
-const home = async (req, res, next) => {
+const home = asyncHandler(async (req, res, next) => {
   const trendingBooks = await Book.aggregate().sample(3);
   let categoryBooks;
 
@@ -39,9 +40,9 @@ const home = async (req, res, next) => {
     }
     return createSendData(data, 'success', 'Unauthenticated', res);
   }
-};
+});
 
-const search = async (req, res, next) => {
+const search = asyncHandler(async (req, res, next) => {
   let token;
   const searchResults = await Book.fuzzySearch(req.query.searchQuery).limit(5);
   if (searchResults.length !== 0) {
@@ -67,7 +68,7 @@ const search = async (req, res, next) => {
     'Search query cannot be empty',
     res,
   );
-};
+});
 
 module.exports = {
   home,
