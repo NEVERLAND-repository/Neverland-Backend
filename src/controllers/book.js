@@ -82,8 +82,6 @@ const add = asyncHandler(async (req, res, next) => {
 
   await user.save();
 
-  user.password = null;
-
   const bookData = {
     user,
     newUserBook,
@@ -94,7 +92,39 @@ const add = asyncHandler(async (req, res, next) => {
 });
 
 const remove = asyncHandler(async (req, res, next) => {
+  const { bookId } = req.query;
 
+  if (!bookId) {
+    const message = 'Missing book ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  const book = await Book.findById(bookId);
+  const user = await User.findById(req.user.id).select('-password');
+
+  if (!book) {
+    const message = 'Invalid book ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  if (!user) {
+    const message = 'Invalid user ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  const deletedUserBook = await UserBook.findOneAndDelete({ userId: req.user.id, bookId });
+
+  await user.books.pull(bookId);
+
+  await user.save();
+
+  const bookData = {
+    user,
+    deletedUserBook,
+  };
+
+  const message = 'Book successfully removed from user library';
+  return createSendData(bookData, 'success', message, res);
 });
 
 const read = asyncHandler(async (req, res, next) => {
