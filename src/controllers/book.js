@@ -15,7 +15,7 @@ const add = asyncHandler(async (req, res, next) => {
   }
 
   const book = await Book.findById(bookId);
-  const user = await User.findById(req.user.id);
+  const user = await User.findById(req.user.id).select('-password');
 
   if (!book) {
     const message = 'Invalid book ID';
@@ -43,9 +43,11 @@ const add = asyncHandler(async (req, res, next) => {
 
   await user.save();
 
+  user.password = null;
+
   const bookData = {
-    newUserBook,
     user,
+    newUserBook,
   };
 
   const message = 'Book successfully added to user library';

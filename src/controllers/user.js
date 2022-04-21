@@ -45,9 +45,8 @@ const profile = asyncHandler(async (req, res, next) => {
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, userData, {
     new: true,
-  });
+  }).select('-password');
 
-  updatedUser.password = null;
   const message = 'User updated successfully';
   return createSendData(updatedUser, 'success', message, res);
 });
