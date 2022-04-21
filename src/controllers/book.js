@@ -1,9 +1,48 @@
 const asyncHandler = require('express-async-handler');
 const { Book, UserBook, User } = require('../models');
-const { createSendData } = require('../services');
+const { createSendData, verifyToken, createSendToken } = require('../services');
 
 const overview = asyncHandler(async (req, res, next) => {
+  const { bookId } = req.query;
 
+  if (!bookId) {
+    const message = 'Missing book ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  const book = await Book.findById(bookId);
+
+  if (!book) {
+    const message = 'Invalid book ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  let token;
+
+  if (
+    req.headers.authorization
+    && req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  } else {
+    return createSendData(book, 'success', 'Unauthenticated', res);
+  }
+
+  if (token) {
+    const decodedToken = verifyToken(token);
+    if (decodedToken) {
+      const userId = decodedToken.id;
+
+      const currentUser = await User.findById(userId);
+
+      if (!currentUser) return createSendToken({}, 'error', 'Invalid user ID', res);
+
+      const userBook = await UserBook.findOne({ userId, bookId });
+
+      return createSendData(userBook, 'success', 'Authenticated', res);
+    }
+    return createSendData(book, 'success', 'Unauthenticated', res);
+  }
 });
 
 const add = asyncHandler(async (req, res, next) => {
