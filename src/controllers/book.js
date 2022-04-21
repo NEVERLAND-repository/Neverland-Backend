@@ -37,7 +37,7 @@ const overview = asyncHandler(async (req, res, next) => {
 
       if (!currentUser) return createSendToken({}, 'error', 'Invalid user ID', res);
 
-      const userBook = await UserBook.findOne({ userId, bookId });
+      const userBook = await UserBook.findOne({ userId, bookId }).populate('bookId');
 
       return createSendData(userBook, 'success', 'Authenticated', res);
     }
