@@ -5,6 +5,13 @@ const { updateUserSchema } = require('../validators');
 
 // User Library Controller
 const library = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select('-password');
+
+  if (!user) {
+    const message = 'Invalid user ID';
+    return createSendData({}, 'error', message, res);
+  }
+
   const keepReading = await UserBook.find({ userId: req.user.id }).where('pageNo').gt(0).sort('-updatedAt')
     .populate('bookId')
     .exec();
@@ -12,6 +19,7 @@ const library = asyncHandler(async (req, res, next) => {
   const yetToRead = await UserBook.find({ userId: req.user.id, pageNo: 0 }).sort('-createdAt').populate('bookId').exec();
 
   const userData = {
+    user,
     keepReading,
     yetToRead,
   };
@@ -39,8 +47,8 @@ const profile = asyncHandler(async (req, res, next) => {
     new: true,
   });
 
+  updatedUser.password = null;
   const message = 'User updated successfully';
-
   return createSendData(updatedUser, 'success', message, res);
 });
 
