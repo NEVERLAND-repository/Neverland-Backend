@@ -8,7 +8,8 @@
     "test": "jest --watchAll --detectOpenHandles --runInBand",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "populate": "node src/populate.js"
+    "populate": "node src/utilities/populateDB.js",
+    "drop": "node src/utilities/dropDB.js"
   },
   "keywords": [
     "example",
