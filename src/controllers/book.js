@@ -128,7 +128,42 @@ const remove = asyncHandler(async (req, res, next) => {
 });
 
 const read = asyncHandler(async (req, res, next) => {
+  const { bookId, pageNo } = req.body;
 
+  if (!bookId) {
+    const message = 'Missing book ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  if (!pageNo) {
+    const message = 'Missing book page number';
+    return createSendData({}, 'error', message, res);
+  }
+
+  const book = await Book.findById(bookId);
+  const user = await User.findById(req.user.id).select('-password');
+
+  if (!book) {
+    const message = 'Invalid book ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  if (!user) {
+    const message = 'Invalid user ID';
+    return createSendData({}, 'error', message, res);
+  }
+
+  const bookData = {
+    bookId,
+    pageNo,
+  };
+
+  const updatedUserBook = await UserBook.findOneAndUpdate({ userId: req.user.id, bookId }, bookData, {
+    new: true,
+  });
+
+  const message = 'Book page count updated successfully';
+  return createSendData(updatedUserBook, 'success', message, res);
 });
 
 module.exports = {
