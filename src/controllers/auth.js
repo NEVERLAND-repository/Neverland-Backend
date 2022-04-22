@@ -42,7 +42,7 @@ const login = asyncHandler(async (req, res, next) => {
 
   const user = await User.findOne({ username });
   if (!user || !(await user.comparePassword(password, user.password))) {
-    const message = 'User password is incorrect';
+    const message = 'Invalid username or password is incorrect';
     return createSendToken({}, 'error', message, res);
   }
 
