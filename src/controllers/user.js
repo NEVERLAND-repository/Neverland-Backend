@@ -16,7 +16,9 @@ const library = asyncHandler(async (req, res, next) => {
     .populate('bookId')
     .exec();
 
-  const yetToRead = await UserBook.find({ userId: req.user.id, pageNo: 0 }).sort('-createdAt').populate('bookId').exec();
+  const yetToRead = await UserBook.find({ userId: req.user.id }).where('pageNo').lte(0).sort('-createdAt')
+    .populate('bookId')
+    .exec();
 
   const userData = {
     user,
