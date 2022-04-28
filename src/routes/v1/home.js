@@ -4,6 +4,6 @@ const { homeControllers } = require('../../controllers');
 const router = express.Router();
 
 router.post('/search', homeControllers.search);
-router.post('/', homeControllers.home);
+router.get('/', homeControllers.home);
 
 module.exports = router;

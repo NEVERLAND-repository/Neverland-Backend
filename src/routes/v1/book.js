@@ -7,6 +7,6 @@ const router = express.Router();
 router.get('/overview/:id', bookControllers.overview);
 router.post('/add', protect, bookControllers.add);
 router.post('/remove', protect, bookControllers.remove);
-router.post('/read', protect, bookControllers.read);
+router.get('/read', protect, bookControllers.read);
 
 module.exports = router;
