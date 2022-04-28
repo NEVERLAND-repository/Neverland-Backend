@@ -6,6 +6,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/Adventures+Of+The+Fly+001.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/Adventures+Of+The+Fly+001.jpeg",
         "category": "comics",
+        "pageTotal": 35,
         "tags": ["action", "superhero"]
     },
     {
@@ -15,6 +16,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/Adventures+Of+The+Fly+002.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/Adventures+Of+The+Fly+002.jpeg",
         "category": "comics",
+        "pageTotal": 29,
         "tags": ["action", "superhero"]
     },
     {
@@ -24,6 +26,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/Batman+-+The+Dark+Knight+Returns.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/Batman+-+The+Dark+Knight+Returns.jpeg",
         "category": "comics",
+        "pageTotal": 200,
         "tags": ["action", "superhero"]
     },
     {
@@ -33,6 +36,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/Batman+-+The+Killing+Joke.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/Batman+-+The+Killing+Joke.jpeg",
         "category": "comics",
+        "pageTotal": 65,
         "tags": ["action", "superhero"]
     },
     {
@@ -42,6 +46,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/Batman+%26+Spiderman.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/Batman+%26+Spiderman.jpg",
         "category": "comics",
+        "pageTotal": 52,
         "tags": ["action", "superhero"]
     },
     {
@@ -51,6 +56,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/New+X-Men+114.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/New+X-Men+114.jpg",
         "category": "comics",
+        "pageTotal": 24,
         "tags": ["action", "superhero"]
     },
     {
@@ -60,6 +66,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/New+X-Men+115.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/New+X-Men+115.jpg",
         "category": "comics",
+        "pageTotal": 24,
         "tags": ["action", "superhero"]
     },
     {
@@ -69,6 +76,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/The+Amazing+Spiderman.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/The+Amazing+Spiderman.jpg",
         "category": "comics",
+        "pageTotal": 26,
         "tags": ["action", "superhero"]
     },
     {
@@ -78,6 +86,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/Ultimate+Spiderman+%23001.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/Ultimate+Spiderman+%23001.jpeg",
         "category": "comics",
+        "pageTotal": 45,
         "tags": ["action", "superhero"]
     },
     {
@@ -87,6 +96,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/comics/Ultimate+Spiderman+%23002.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/comics/Ultimate+Spiderman+%23002.jpeg",
         "category": "comics",
+        "pageTotal": 24,
         "tags": ["action", "superhero"]
     },
     {
@@ -96,6 +106,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+1.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+1.jpeg",
         "category": "manga",
+        "pageTotal": 54,
         "tags": ["action", "webtoon"]
     },
     {
@@ -105,6 +116,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+2.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+2.jpeg",
         "category": "manga",
+        "pageTotal": 41,
         "tags": ["action", "dark fantasy"]
     },
     {
@@ -114,6 +126,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+3.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+3.jpeg",
         "category": "manga",
+        "pageTotal": 44,
         "tags": ["action", "dark fantasy"]
     },
     {
@@ -123,6 +136,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+4.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/Attack+on+Titan+Episode+4.jpeg",
         "category": "manga",
+        "pageTotal": 50,
         "tags": ["action", "dark fantasy"]
     },
     {
@@ -132,6 +146,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/The+Breaker+New+Waves+1.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/The+Breaker+New+Waves+1.jpeg",
         "category": "manga",
+        "pageTotal": 8,
         "tags": ["action", "romance", "drama"]
     },
     {
@@ -141,6 +156,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/The+Breaker+New+Waves+2.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/The+Breaker+New+Waves+2.jpeg",
         "category": "manga",
+        "pageTotal": 8,
         "tags": ["action", "romance", "drama"]
     },
     {
@@ -150,6 +166,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/The+Breaker+New+Waves+3.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/The+Breaker+New+Waves+3.jpeg",
         "category": "manga",
+        "pageTotal": 8,
         "tags": ["action", "romance", "drama"]
     },
     {
@@ -159,6 +176,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/Reincarnated+Marquis+1.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/Reincarnated+Marquis+1.jpeg",
         "category": "manga",
+        "pageTotal": 25,
         "tags": ["action", "romance", "fantasy"]
     },
     {
@@ -168,6 +186,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/Reincarnated+Marquis+2.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/Reincarnated+Marquis+2.jpeg",
         "category": "manga",
+        "pageTotal": 19,
         "tags": ["action", "romance", "fantasy"]
     },
     {
@@ -177,6 +196,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/manga/Reincarnated+Marquis+3.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/manga/Reincarnated+Marquis+3.jpeg",
         "category": "manga",
+        "pageTotal": 24,
         "tags": ["action", "romance", "fantasy"]
     },
     {
@@ -186,6 +206,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/And+the+Mountains+Echoed.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/And+the+Mountains+Echoed.jpg",
         "category": "novels",
+        "pageTotal": 233,
         "tags": ["historical fiction", "drama"]
     },
     {
@@ -195,6 +216,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Becoming+Nigerian.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Becoming+Nigerian.jpg",
         "category": "novels",
+        "pageTotal": 95,
         "tags": ["satire", "humor", "literary fiction"]
     },
     {
@@ -204,6 +226,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Black+Ass.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Black+Ass.jpg",
         "category": "novels",
+        "pageTotal": 132,
         "tags": ["satire", "nigeria"]
     },
     {
@@ -213,6 +236,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Daughters+Who+Walk+This+Path.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Daughters+Who+Walk+This+Path.jpg",
         "category": "novels",
+        "pageTotal": 348,
         "tags": ["feminism", "contemporary", "cultural"]
     },
     {
@@ -222,6 +246,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Doctor+Sleep.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Doctor+Sleep.jpg",
         "category": "novels",
+        "pageTotal": 563,
         "tags": ["horror", "gothic", "dark fantasy"]
     },
     {
@@ -231,6 +256,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Everything+Good+Will+Come.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Everything+Good+Will+Come.jpg",
         "category": "novels",
+        "pageTotal": 259,
         "tags": ["feminism", "coming of age", "cultural"]
     },
     {
@@ -240,6 +266,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/No+Longer+at+Ease.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/No+Longer+at+Ease.jpg",
         "category": "novels",
+        "pageTotal": 128,
         "tags": ["historical", "cultural", "nigeria"]
     },
     {
@@ -249,6 +276,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Our+Men+Do+Not+Belong+to+Us.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Our+Men+Do+Not+Belong+To+Us.jpg",
         "category": "novels",
+        "pageTotal": 32,
         "tags": ["poetry", "feminism", "war"]
     },
     {
@@ -258,6 +286,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Stay+With+Me.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Stay+With+Me.jpg",
         "category": "novels",
+        "pageTotal": 263,
         "tags": ["historical", "contemporary", "nigeria"]
     },
     {
@@ -267,6 +296,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/The+DaVinci+Code.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/The+DaVinci+Code.jpg",
         "category": "novels",
+        "pageTotal": 383,
         "tags": ["adventure", "mystery", "thriller", "suspense"]
     },
     {
@@ -276,6 +306,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/The+Girl+on+the+Train.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/The+Girl+on+the+Train.jpg",
         "category": "novels",
+        "pageTotal": 1510,
         "tags": ["crime", "mystery", "thriller", "suspense"]
     },
     {
@@ -285,6 +316,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/The+Girl+With+The+Dragon+Tattoo.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/The+Girl+With+The+Dragon+Tattoo.jpg",
         "category": "novels",
+        "pageTotal": 488,
         "tags": ["crime", "mystery", "thriller", "suspense"]
     },
     {
@@ -294,6 +326,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/The+Hairdresser+of+Harare.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/The+Hairdresser+of+Harare.jpg",
         "category": "novels",
+        "pageTotal": 129,
         "tags": ["contemporary", "LGBT", "zimbabwe"]
     },
     {
@@ -303,6 +336,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/The+Notebook.jpg",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/The+Notebook.pdf",
         "category": "novels",
+        "pageTotal": 498,
         "tags": ["contemporary", "adult", "romance", "drama"]
     },
     {
@@ -312,6 +346,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/True+Believer.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/True+Believer.jpg",
         "category": "novels",
+        "pageTotal": 255,
         "tags": ["contemporary", "adult", "romance", "mystery"]
     },
     {
@@ -321,6 +356,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/What+It+Means+When+a+Man+Falls+From+The+Sky.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/What+It+Means+When+a+Man+Falls+From+The+Sky.jpg",
         "category": "novels",
+        "pageTotal": 127,
         "tags": ["contemporary", "fantasy", "magical realism", "western africa"]
     },
     {
@@ -330,6 +366,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Wife+of+the+Gods.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Wife+of+the+Gods.jpg",
         "category": "novels",
+        "pageTotal": 200,
         "tags": ["mystery", "thriller", "cultural", "western africa"]
     },
     {
@@ -339,6 +376,7 @@
         "content": "https://neverland-api.s3.amazonaws.com/novels/Zikora.pdf",
         "bookImg": "https://neverland-api.s3.amazonaws.com/novels/Zikora.jpg",
         "category": "novels",
+        "pageTotal": 30,
         "tags": ["contemporary", "short story", "feminism", "nigeria"]
     }
 ]
