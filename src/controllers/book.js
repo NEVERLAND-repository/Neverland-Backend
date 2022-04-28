@@ -3,7 +3,7 @@ const { Book, UserBook, User } = require('../models');
 const { createSendData, verifyToken, createSendToken } = require('../services');
 
 const overview = asyncHandler(async (req, res, next) => {
-  const { bookId } = req.query;
+  const bookId = req.params.id;
 
   if (!bookId) {
     const message = 'Missing book ID';
