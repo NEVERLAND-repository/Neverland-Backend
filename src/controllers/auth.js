@@ -25,9 +25,9 @@ const signup = asyncHandler(async (req, res, next) => {
     password,
   };
 
-  await new User(userData).save();
+  const user = await new User(userData).save();
   const message = 'Account created successfully';
-  return createSendToken({}, 'success', message, res);
+  return createSendToken(user, 'success', message, res);
 });
 
 // Login Controller
