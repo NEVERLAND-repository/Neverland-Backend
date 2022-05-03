@@ -29,8 +29,7 @@ const UserSchema = new mongoose.Schema(
     },
     books: [
       {
-        type: mongoose.Types.ObjectId,
-        ref: 'UserBook',
+        type: String,
       },
     ],
     verifiedEmail: {

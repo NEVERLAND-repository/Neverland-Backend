@@ -39,6 +39,8 @@ const overview = asyncHandler(async (req, res, next) => {
 
       const userBook = await UserBook.findOne({ userId, bookId }).populate('bookId');
 
+      if (!userBook) return createSendData(book, 'success', 'Authenticated', res);
+
       return createSendData(userBook, 'success', 'Authenticated', res);
     }
     return createSendData(book, 'success', 'Unauthenticated', res);
