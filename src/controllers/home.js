@@ -44,7 +44,7 @@ const home = asyncHandler(async (req, res, next) => {
 
 const search = asyncHandler(async (req, res, next) => {
   let token;
-  const searchResults = await Book.fuzzySearch(req.query.searchQuery).limit(5);
+  const searchResults = await Book.fuzzySearch(req.query.searchQuery).limit(10);
   if (searchResults.length !== 0) {
     if (
       req.headers.authorization
