@@ -333,8 +333,8 @@
         "name": "The Notebook",
         "author": "Nicholas Sparks",
         "description": "Set amid the austere beauty of the North Carolina coast begins the story of Noah Calhoun, a rural Southerner recently returned from the Second World War. Noah is restoring a plantation home to its former glory, and he is haunted by images of the beautiful girl he met fourteen years earlier, a girl he loved like no other. Unable to find her, yet unwilling to forget the summer they spent together, Noah is content to live with only memories...until she unexpectedly returns to his town to see him once again. Like a puzzle within a puzzle, the story of Noah and Allie is just the beginning. As it unfolds, their tale miraculously becomes something different, with much higher stakes. The result is a deeply moving portrait of love itself, the tender moments and the fundamental changes that affect us all. It is a story of miracles and emotions that will stay with you forever.",
-        "content": "https://neverland-api.s3.amazonaws.com/novels/The+Notebook.jpg",
-        "bookImg": "https://neverland-api.s3.amazonaws.com/novels/The+Notebook.pdf",
+        "content": "https://neverland-api.s3.amazonaws.com/novels/The+Notebook.pdf",
+        "bookImg": "https://neverland-api.s3.amazonaws.com/novels/The+Notebook.jpg",
         "category": "novels",
         "pageTotal": 498,
         "tags": ["contemporary", "adult", "romance", "drama"]
