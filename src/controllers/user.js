@@ -38,7 +38,6 @@ const search = asyncHandler(async (req, res, next) => {
   }
 
   const userBooks = user.books;
-  console.log(userBooks);
 
   if (userBooks.length === 0) {
     return createSendData(
@@ -52,8 +51,12 @@ const search = asyncHandler(async (req, res, next) => {
   const searchResults = await Book.fuzzySearch(req.query.searchQuery).limit(5);
 
   if (searchResults.length !== 0) {
-    const userBooksSearchResults = userBooks.filter((userBook) => searchResults.forEach((searchResultBook) => {
-      if (userBook === searchResultBook._id) return searchResultBook;
+    const userBooksSearchResults = [];
+
+    userBooks.filter((userBook) => searchResults.forEach((searchResultBook) => {
+      if (userBook.toString() === searchResultBook._id.toString()) {
+        userBooksSearchResults.push(searchResultBook);
+      }
     }));
 
     const userData = {
