@@ -6,7 +6,6 @@ const { updateUserSchema } = require('../validators');
 // User Library Controller
 const library = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('-password');
-
   if (!user) {
     const message = 'Invalid user ID';
     return createSendData({}, 'error', message, res);
