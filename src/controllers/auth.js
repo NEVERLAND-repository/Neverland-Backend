@@ -10,7 +10,11 @@ const signup = asyncHandler(async (req, res, next) => {
   const validateUserInput = createUserSchema.validate({ fullName, username, password });
 
   if (validateUserInput.error) {
-    return createSendToken({}, 'error', validateUserInput.error, res);
+    let message = '';
+    if (validateUserInput.error.details[0].path[0] === 'fullName') message = 'First name has to start with a letter, can contain spaces, must be at least 3 characters, and no more than 30 characters. No special characters allowed';
+    if (validateUserInput.error.details[0].path[0] === 'username') message = 'Username has to start with a letter, can contain numbers and underscores, must be at least 3 characters, and no more than 30 characters. No spaces and no other special characters allowed';
+    if (validateUserInput.error.details[0].path[0] === 'password') message = 'Password has to start with a letter, can contain numbers, must be at least 8 characters, and no more than 30 characters. No spaces and special characters allowed';
+    return createSendToken({}, 'error', message, res);
   }
 
   const userExists = await User.findOne({ username });
@@ -37,7 +41,10 @@ const login = asyncHandler(async (req, res, next) => {
   const validateUserInput = loginUserSchema.validate({ username, password });
 
   if (validateUserInput.error) {
-    return createSendToken({}, 'error', validateUserInput.error, res);
+    let message = '';
+    if (validateUserInput.error.details[0].path[0] === 'username') message = 'Username has to start with a letter, can contain numbers and underscores, must be at least 3 characters, and no more than 30 characters. No spaces and no other special characters allowed';
+    if (validateUserInput.error.details[0].path[0] === 'password') message = 'Password has to start with a letter, can contain numbers, must be at least 8 characters, and no more than 30 characters. No spaces and special characters allowed';
+    return createSendToken({}, 'error', message, res);
   }
 
   const user = await User.findOne({ username });

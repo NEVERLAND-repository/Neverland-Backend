@@ -83,7 +83,10 @@ const profile = asyncHandler(async (req, res, next) => {
   const validateUserInput = updateUserSchema.validate({ fullName, gender });
 
   if (validateUserInput.error) {
-    return createSendData({}, 'error', validateUserInput.error, res);
+    let message = '';
+    if (validateUserInput.error.details[0].path[0] === 'fullName') message = 'First name has to start with a letter, can contain spaces, must be at least 3 characters, and no more than 30 characters. No special characters allowed';
+    if (validateUserInput.error.details[0].path[0] === 'gender') message = "Gender has to be one of 'male', 'female', 'non-binary' or 'none'";
+    return createSendData({}, 'error', message, res);
   }
 
   const userData = {
