@@ -91,12 +91,14 @@ const profile = asyncHandler(async (req, res, next) => {
     gender,
   };
 
-  const updatedUser = await User.findByIdAndUpdate(req.user.id, userData, {
-    new: true,
-  }).select('-password');
+  if (fullName || gender) {
+    const updatedUser = await User.findByIdAndUpdate(req.user.id, userData, {
+      new: true,
+    }).select('-password');
 
-  const message = 'User updated successfully';
-  return createSendData(updatedUser, 'success', message, res);
+    const message = 'User updated successfully';
+    return createSendData(updatedUser, 'success', message, res);
+  }
 });
 
 module.exports = {
