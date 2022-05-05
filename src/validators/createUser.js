@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const createUserSchema = Joi.object({
   fullName: Joi.string()
-    .pattern(/^[A-Za-z][A-Za-z0-9 ]{2,30}$/)
+    .pattern(/^[A-Za-z][A-Za-z ]{2,30}$/)
     .min(3)
     .max(30)
     .required(),
