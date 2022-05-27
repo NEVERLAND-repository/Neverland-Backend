@@ -11,9 +11,7 @@ const DB = process.env.MONGODB_URL;
 const start = asyncHandler(async (_port, _url, _app) => {
   try {
     await connect(_url);
-    _app.listen(_port, () =>
-      console.log(`Server is running on port: ${_port}`)
-    );
+    _app.listen(_port, () => console.log(`Server is running on port: ${_port}`));
   } catch (error) {
     console.log(error);
   }

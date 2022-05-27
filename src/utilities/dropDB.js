@@ -20,9 +20,4 @@ const deleteData = async () => {
   process.exit();
 };
 
-if (process.argv[2] === '--import') {
-  console.log('hey');
-  // importData();
-} else if (process.argv[2] === '--delete') {
-  deleteData();
-}
+deleteData();

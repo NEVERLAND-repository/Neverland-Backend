@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongooseFuzzySearching = require('mongoose-fuzzy-searching');
 
 const BookSchema = new mongoose.Schema(
   {
@@ -26,6 +27,10 @@ const BookSchema = new mongoose.Schema(
       trim: true,
       required: [true, 'Book content URL must be provided'],
     },
+    pageTotal: {
+      type: Number,
+      default: 0,
+    },
     bookImg: {
       type: String,
       minlength: [1, 'Book image URL can not be less than 1 character'],
@@ -46,7 +51,11 @@ const BookSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
+
+BookSchema.plugin(mongooseFuzzySearching, {
+  fields: ['name', 'author'],
+});
 
 module.exports = mongoose.model('Book', BookSchema);

@@ -65,6 +65,9 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+#Husky configuration
+.husky/
+
 # Yarn Integrity file
 .yarn-integrity
 
